@@ -7,10 +7,18 @@ class PostsController < ApplicationController
   end
 
   def show
+  	@post = Post.find(params[:id])
   end
 
   def create
-  	@post Post.new(permit_params)
+  	@post = Post.new(permit_params)
+  	if @post.save
+  		flash[:success] = "Success!"
+  		redirect_to post_path(@post)
+  	else
+  		flash[:error] = @post.errors.full_messages
+  		redirect_to new_post_path
+  	end
   end
 
   private
