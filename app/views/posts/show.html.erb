@@ -1,3 +1,8 @@
-<%= image_tag(@post.image.url(:medium)) %>
-<br>
-<%= @post.description %>
+<div class="imagebox">
+  <div class="image">
+		<%= image_tag(@post.image.url(:medium)) %>
+	</div>
+	<div class="description">
+		<%= @post.description %>
+	</div>
+</div>
